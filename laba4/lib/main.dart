@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +29,15 @@ class _DormitoryPageState extends State<DormitoryPage> {
       likes++;
     });
   }
-  
+  void podelitsya() {
+    Share.share('Поделиться информацией об общежитии');
+  }
+  void kopirovatadress() {
+    Clipboard.setData(ClipboardData(text: "г. Краснодар, ул. Калинина 13/20"));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Адрес скопирован в буфер обмена'),
+    ));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,11 +82,59 @@ class _DormitoryPageState extends State<DormitoryPage> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.phone, color: Colors.green),
+                            onPressed: () async{
+                              final Uri url = Uri(
+                                scheme: 'tel',
+                                path: "777777777777",
+                              );
+                              if (await canLaunchUrl(url)){
+                                await launchUrl(url);
+                              } else{
+                                print('Ошибка');
+                              }
+                            },
+                          ),
+                          Text('Позвонить'),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.directions, color: Colors.green),
+                            onPressed: kopirovatadress,
+                          ),
+                          Text('Маршрут'),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          IconButton(
+                              icon: Icon(Icons.share, color: Colors.green),
+                              onPressed: podelitsya),
+                          Text('Поделиться'),
+                        ],
+                      ),
                     ],
                   ),
-            )
+                  SizedBox(height: 16),
+                  Text(
+                    "Студенческий городок или так называемый кампус Кубанского ГАУ состоит из двадцати общежитий, в которых проживает более 8000 студентов, что составляет 96 от всех нуждающихся. Студенты первого курса обеспечены местами в общежитии полностью. В соответствии с Положением о студенческих общежитиях университета, при поселении между администрацией и студентами заключается договор найма жилого помещения. Воспитательная работа в общежитиях направлена на улучшение быта, соблюдение правил внутреннего распорядка, отсутствия асоциальных явлений в молодежной среде. Условия проживания в общежитиях университетского кампуса полностью отвечают санитарным нормам и требованиям: наличие оборудованных кухонь, душевых комнат, прачечных, читальных залов, комнат самоподготовки, помещений для заседаний студенческих советов и наглядной агитации. С целью улучшения условий быта студентов активно работает система студенческого самоуправления - студенческие советы организуют всю работу по самообслуживанию.",
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ],
               ),
-            )
-    );}
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
