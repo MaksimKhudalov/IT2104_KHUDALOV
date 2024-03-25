@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'spisok.dart';
 import 'beskspisok.dart';
+import 'kvadrat.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,6 +38,7 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               child: Text('Список'),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
             ),
             ElevatedButton(
               onPressed: () {
@@ -46,6 +48,7 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               child: Text('Бесконечный список'),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
             ),
             ElevatedButton(
               onPressed: () {
@@ -55,6 +58,7 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               child: Text('Возведение в квадрат'),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             ),
           ],
         ),
