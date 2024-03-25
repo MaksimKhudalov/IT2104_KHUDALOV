@@ -30,8 +30,22 @@ class _DormitoryPageState extends State<DormitoryPage> {
     body: SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [])
-    )
-    );
+        children: [
+          Image.network(
+            'https://sun6-20.userapi.com/s/v1/if2/5KzWOm7-zuFbvIsFRwKpM6sl2YLZ1VhRFVL0OK1BQjEHZIqp0PYjKQ2hk9eJ36POQUwlGwXQ47KOTT0OyW-xiQ9y.jpg?size=200x200&quality=96&crop=286,118,761,761&ava=1',
+            height: 200,
+            fit: BoxFit.cover,
+    ),
+    Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Общежитие 20",
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+        ])
+    )])));
   }
 }
