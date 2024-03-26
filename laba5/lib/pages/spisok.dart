@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laba5/pages/beskspisok.dart';
 
 
 class spisok extends StatelessWidget {
@@ -12,6 +13,13 @@ class spisok extends StatelessWidget {
         appBar: AppBar(
           title: Text('Список элементов'),
           backgroundColor: Colors.green,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+
         ),
         body: ListView(
           children: const [
@@ -21,6 +29,16 @@ class spisok extends StatelessWidget {
             Divider(),
             Text('0010')
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => beskspisok()),
+            );
+          },
+          child: Icon(Icons.arrow_forward),
+          backgroundColor: Colors.green,
         ),
       ),
     );
