@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'spisok.dart';
-import 'beskspisok.dart';
-import 'kvadrat.dart';
+import 'pages/spisok.dart';
+import 'pages/beskspisok.dart';
+import 'pages/kvadrat.dart';
 
 void main() {
   runApp(MyApp());
